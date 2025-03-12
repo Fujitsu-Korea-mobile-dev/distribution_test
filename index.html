@@ -23,7 +23,7 @@
                 const userAgent = navigator.userAgent || navigator.vendor || window.opera;
                 if (/android/i.test(userAgent)) { return "Android"; }
                 else if (/iPad|iPhone|iPod/.test(userAgent) ) { return "iOS"; }
-                else if (/Macintosh/.test(userAgent) && navigator.maxTouchPoints && navigator.maxTouchPoints > 2) { return "iOS"; }
+                //else if (/Macintosh/.test(userAgent) && navigator.maxTouchPoints && navigator.maxTouchPoints > 2) { return "iOS"; }
                 else { return "unknown"; }
             }
 
@@ -38,6 +38,10 @@
                     document.querySelectorAll(`.ios-app`).forEach(app => app.style.display = 'block');
                 }
 
+                if(os === "unknown"){
+                    document.querySelectorAll(`.android-app`).forEach(app => app.style.display = 'block');
+                    document.querySelectorAll(`.ios-app`).forEach(app => app.style.display = 'block');
+                }
             }
 
             window.onload = showAppsByOS;
