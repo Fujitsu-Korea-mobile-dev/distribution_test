@@ -12,6 +12,37 @@
         <!--link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" /-->
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="styles.css" rel="stylesheet" />
+        <style>
+            .app {
+                display: none; /* 기본적으로 숨김 */
+            }
+        </style>
+
+        <script>
+            function getDevice() {
+                const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+                if (/android/i.test(userAgent)) { return "Android"; }
+                else if (/iPad|iPhone|iPod/.test(userAgent) ) { return "iOS"; }
+                else if (/Macintosh/.test(userAgent) && navigator.maxTouchPoints && navigator.maxTouchPoints > 2) { return "iOS"; }
+                else { return "unknown"; }
+            }
+
+            function showAppsByOS(){
+                const os = getDevice();
+                if(os === "Android"){
+                    // 감지된 OS에 해당하는 앱만 표시
+                    document.querySelectorAll(`.android-app`).forEach(app => app.style.display = 'block');
+                }
+                if(os === "iOS"){
+                    // 감지된 OS에 해당하는 앱만 표시
+                    document.querySelectorAll(`.ios-app`).forEach(app => app.style.display = 'block');
+                }
+
+            }
+
+            window.onload = showAppsByOS;
+            
+        </script>
     </head>
     <body>
         <!-- Responsive navbar-->
@@ -25,7 +56,7 @@
             <div class="container px-lg-5">
                 <!-- Page Features-->
                 <div class="row gx-lg-5">
-                    <div class="col-lg-6 col-xxl-4 mb-5">
+                    <div class="col-lg-6 col-xxl-4 mb-5 android-app app">
                         <div class="card bg-light border-0 h-100">
                             <div class="card-body text-center p-4 p-lg-5">
                                 <h2 class="fs-4 fw-bold">Android 개발 로컬 서버  </h2>
@@ -70,7 +101,7 @@
                             </div>
                         </div>
                     </div-->
-                    <div class="col-lg-6 col-xxl-4 mb-5">
+                    <div class="col-lg-6 col-xxl-4 mb-5 android-app app">
                         <div class="card bg-light border-0 h-100">
                             <div class="card-body text-center p-4 p-lg-5">
                                 <h2 class="fs-4 fw-bold">Android 개발 로컬 서버</h2>
@@ -79,7 +110,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-6 col-xxl-4 mb-5">
+                    <div class="col-lg-6 col-xxl-4 mb-5 android-app app">
                         <div class="card bg-light border-0 h-100">
                             <div class="card-body text-center p-4 p-lg-5">
                                 <h2 class="fs-4 fw-bold">Android 개발서버</h2>
@@ -88,7 +119,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-6 col-xxl-4 mb-5">
+                    <div class="col-lg-6 col-xxl-4 mb-5 android-app app">
                         <div class="card bg-light border-0 h-100">
                             <div class="card-body text-center p-4 p-lg-5">
                                 <h2 class="fs-4 fw-bold">Android 개발서버</h2>
@@ -97,7 +128,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-6 col-xxl-4 mb-5">
+                    <div class="col-lg-6 col-xxl-4 mb-5 ios-app app">
                         <div class="card bg-light border-0 h-100">
                             <div class="card-body text-center p-4 p-lg-5">
                                 <h2 class="fs-4 fw-bold">iOS 개발서버</h2>
@@ -106,7 +137,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-6 col-xxl-4 mb-5">
+                    <div class="col-lg-6 col-xxl-4 mb-5 ios-app app">
                         <div class="card bg-light border-0 h-100">
                             <div class="card-body text-center p-4 p-lg-5">
                                 <h2 class="fs-4 fw-bold">iOS 개발서버</h2>
